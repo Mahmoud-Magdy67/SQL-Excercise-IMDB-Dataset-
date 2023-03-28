@@ -1,0 +1,69 @@
+1-What are the Top 10 rated movies?
+
+SELECT * FROM imdb.mytable
+ORDER BY IMDB_Rating DESC
+Limit 10 
+;
+
+2-What are the Least 10 rated movies?
+
+SELECT * FROM imdb.mytable
+ORDER BY IMDB_Rating asc
+Limit 10 
+;
+
+3-What are the Movies with rating bigger than 8 or meta score bigger than 80?
+
+SELECT * FROM imdb.mytable
+WHERE IMDB_Rating>8 AND Meta_score >80
+ORDER BY Series_Title
+;
+
+4-What are the Oldest 3 Movies?
+
+SELECT * FROM imdb.mytable
+ORDER BY Released_Year
+LIMIT 3
+;
+
+5- How many movies star Martin Scorsese as director and Robert De Niro As Actor?
+
+SELECT COUNT(Series_Title) as 'Number Of Appearnces' FROM imdb.mytable
+WHERE Director='Martin Scorsese' AND Star1='Robert De Niro'
+;
+
+6-What are these Movies?
+
+SELECT * FROM imdb.mytable
+WHERE Director='Martin Scorsese' AND Star1='Robert De Niro'
+GROUP BY Series_Title
+ORDER BY Released_Year
+;
+
+7-What are the top rated movies that are certified PG or PG-13?
+
+SELECT * FROM imdb.mytable
+WHERE Certificate ='PG' or 'PG-13'
+ORDER BY IMDB_Rating desc
+;
+
+8-What are the 20 most popular Movies(highest no. of votes) in the last decade?
+
+SELECT * FROM imdb.mytable
+WHERE Genre LIKE '%Comedy%' AND Released_Year>2000
+ORDER BY No_of_Votes desc
+;
+
+9-What are the name of the movies that starts with 'Z' or ends with 'Z'?
+
+SELECT * FROM imdb.mytable
+WHERE Series_Title LIKE  'z%' OR Series_Title LIKE '%z'
+ORDER BY Series_Title
+;
+
+10-What are the Top rated Comedy Movies in the period between 1990 and 2010?
+
+SELECT * FROM imdb.mytable
+WHERE Genre LIKE '%Comedy%' AND Released_Year BETWEEN 1990 AND 2010
+ORDER BY IMDB_Rating desc
+;
